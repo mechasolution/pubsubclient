@@ -10,8 +10,6 @@ const char* password = "WIFI의 비밀번호를 입력해주세요";
 const char* mqtt_server = "브로커의 IP를 입력해주세요";
 
 long lastMsg = 0;
-char msg[50];
-int value = 0;
 
 char topic[] = "outTopic";
 
@@ -67,10 +65,6 @@ void loop() {
   long now = millis();
   if (now - lastMsg > 2000) {
     lastMsg = now;
-    ++value;
-    snprintf (msg, 50, "hello world #%ld", value);
-    Serial.print("Publish message: ");
-    Serial.println(msg);
-    client.publish(topic, msg); // 토픽에 메세지 버퍼를 발행해주는 함수
+    client.publish(topic, "Hello MQTT"); // 토픽에 메세지 버퍼를 발행해주는 함수
   }
 }
