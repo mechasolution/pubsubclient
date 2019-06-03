@@ -66,5 +66,6 @@ void loop() {
   if (now - lastMsg > 2000) {
     lastMsg = now;
     client.publish(topic, "Hello MQTT"); // 토픽에 메세지 버퍼를 발행해주는 함수
+    Serial.println("Message Published!");
   }
 }
